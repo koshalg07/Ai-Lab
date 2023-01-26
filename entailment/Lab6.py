@@ -3,12 +3,10 @@ variable={'p':0,'q':1, 'r':2}
 kb=''
 q=''
 priority={'~':3,'v':1,'^':2}
-
 def input_rules():
     global kb, q
     kb = (input("Enter rule: "))
     q = input("Enter the Query: ")
-
 def entailment():
     global kb, q
     print('*'*10+"Truth Table Reference"+'*'*10)
@@ -22,7 +20,6 @@ def entailment():
         if s and not f:
             return False
     return True
-
 def isOperand(c):
     return c.isalpha() and c!='v'
 
@@ -43,7 +40,6 @@ def hasLessOrEqualPriority(c1, c2):
         return priority[c1]<=priority[c2]
     except KeyError:
         return False
-
 def toPostfix(infix):
     stack = []
     postfix = ''
@@ -66,7 +62,6 @@ def toPostfix(infix):
         postfix += stack.pop()
     
     return postfix
-
 def evaluatePostfix(exp, comb):
     stack = []
     for i in exp:
@@ -80,13 +75,11 @@ def evaluatePostfix(exp, comb):
             val2 = stack.pop()
             stack.append(_eval(i,val2,val1))
     return stack.pop()
-
 def _eval(i, val1, val2):
     if i == '^': 
         return val2 and val1
     return val2 or val1
 
-#Test 1
 input_rules()
 ans = entailment()
 if ans:
